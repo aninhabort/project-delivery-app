@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       field: 'user_id',
       foreignKey: true,
-      Type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
     },
   }, {
     createdAt: 'sale_date',

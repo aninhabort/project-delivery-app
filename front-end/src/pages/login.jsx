@@ -63,21 +63,23 @@ export default function Login() {
             onChange={ (e) => handleChange(setPassword, e) }
           />
         </label>
-        <button
-          data-testid="common_login__button-login"
-          type="submit"
-          className="button-login"
-          disabled={ isButtonDisabled }
-        >
-          Login
-        </button>
-        <button
-          data-testid="common_login__button-register"
-          type="submit"
-          className="button-create-user"
-        >
-          Ainda não tenho conta
-        </button>
+        <div className="buttons">
+          <button
+            data-testid="common_login__button-login"
+            type="submit"
+            className="button-login"
+            disabled={ isButtonDisabled }
+          >
+            Login
+          </button>
+          <button
+            data-testid="common_login__button-register"
+            type="submit"
+            className="button-create-user"
+          >
+            Ainda não tenho conta
+          </button>
+        </div>
       </form>
     </div>
   );

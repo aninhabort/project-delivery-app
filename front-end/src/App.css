@@ -28,6 +28,13 @@
   padding: 4px;
   margin-bottom: 10px;
   margin-top: 5px;
+  width: 190px;
+  height: 18px;
+}
+
+.buttons {
+  display: flex;
+  flex-flow: column;
 }
 
 .button-login, .button-create-user {
@@ -35,10 +42,11 @@
   border: 2px solid #464646;
   border-radius: 5px;
   padding: 5px 10px;
-  margin: 10px;
+  margin: 8px;
+  width: 200px;
 }
 
-/* .button-login:hover, .button-create-user:hover {
+.button-login:hover, .button-create-user:hover {
   background-color: #464646;
   color: white;
-} */
+}
