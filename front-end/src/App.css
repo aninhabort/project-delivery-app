@@ -1,32 +1,44 @@
 * {
   align-items: center;
-  background: #0fa36b;
   color: #464646;
 }
 
-form {
+.home {
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
+  margin-top: 250px;
   justify-content: center;
+  align-items: center;
 }
 
-label {
-  margin: 10px;
+.login-forms {
+  align-content: center;
+  background-color: rgb(127, 228, 127);
+  border-radius: 5px; 
+  flex-flow: column wrap;
+  width: 200px;
+  height: 200px;
+  padding: 15px;
 }
 
-input {
-  background-color: white;
+#email, #password {
+  background-color: rgb(255, 255, 255);
   border: none;
   border-radius: 5px;
-  margin: 10px;
   padding: 4px;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
-button {
-  background-color: #464646;
-  border: none;
+.button-login, .button-create-user {
+  background-color: rgb(127, 228, 127);
+  border: 2px solid #464646;
   border-radius: 5px;
-  color: white;
   padding: 5px 10px;
+  margin: 10px;
 }
+
+/* .button-login:hover, .button-create-user:hover {
+  background-color: #464646;
+  color: white;
+} */
