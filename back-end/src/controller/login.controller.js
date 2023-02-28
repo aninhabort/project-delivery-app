@@ -1,7 +1,7 @@
 require('dotenv').config();
 const loginService = require('../service/login.service');
 
-const findUserByEmail = async (req, res, next) => {
+const findUserByEmail = async (req, res) => {
   const user = req.body;
 
   const userData = await loginService.findUserByEmail(user);
@@ -12,4 +12,5 @@ const findUserByEmail = async (req, res, next) => {
 
   return res.status(200).json(userData);
 }
+
 module.exports = { findUserByEmail };
