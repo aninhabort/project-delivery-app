@@ -9,7 +9,7 @@ export default function Login() {
 
   useEffect(() => {
     const validateEmail = () => {
-      const validate = /^[\w.]+@[\w.]+\.[a-z]{2,3}(\.[a-z]{2})?$/i.test(email);
+      const validate = /^\S+@[a-z0-9]+\.[a-z]+$/i.test(email);
       setValidEmail(validate);
     };
     validateEmail();
