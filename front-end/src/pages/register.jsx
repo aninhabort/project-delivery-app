@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import requestPost from '../helpers/axios.requests';
 import validateRegister from '../helpers/validateRegister';
 
@@ -6,24 +6,30 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    const button = () => {
-      const test = validateRegister(name, email, password);
-      console.log(test);
-      return !test;
-    };
-    button();
-  });
+  const [loginError, setError] = useState(false);
 
   const handleChange = (param, e) => {
     const { value } = e.target;
     param(value);
   };
 
+  const button = () => {
+    const test = validateRegister(name, email, password);
+    console.log(test);
+    return !test;
+  };
+  button();
+
   return (
     <form
       className="register-forms"
+      onSubmit={ async (e) => {
+        e.preventDefault();
+        const result = await requestPost('http://localhost:3001/register', { name, email, password }).then((response) => response).catch(({ response }) => response);
+        const ERROR_STATUS = 404;
+        if (result.status === ERROR_STATUS) setError(true);
+        else console.log('erro');
+      } }
     >
       <label htmlFor="name">
         Nome
@@ -32,7 +38,7 @@ export default function Register() {
           type="name"
           name="name"
           id="name"
-          handleChange={ (e) => handleChange(setName, e) }
+          onChange={ (e) => handleChange(setName, e) }
         />
       </label>
       <label htmlFor="email">
@@ -42,7 +48,7 @@ export default function Register() {
           type="email"
           name="email"
           id="email"
-          handleChange={ (e) => handleChange(setEmail, e) }
+          onChange={ (e) => handleChange(setEmail, e) }
         />
       </label>
       Senha
@@ -52,20 +58,23 @@ export default function Register() {
           type="password"
           name="password"
           id="password"
-          handleChange={ (e) => handleChange(setPassword, e) }
+          onChange={ (e) => handleChange(setPassword, e) }
         />
       </label>
       <button
         data-testid="common_register__button-register"
         type="submit"
+        disabled={ button() }
       >
         CADASTRAR
       </button>
-      <p
-        data-testid="common_login__element-invalid-email"
-      >
-        E-mail inválido
-      </p>
+      { loginError === true && (
+        <p
+          data-testid="common_login__element-invalid-email"
+        >
+          E-mail inválido
+        </p>
+      )}
     </form>
   );
 }
