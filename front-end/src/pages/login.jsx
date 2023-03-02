@@ -50,7 +50,7 @@ export default function Login() {
           const result = await requestPost('http://localhost:3001/login', { email, password }).then((response) => response).catch(({ response }) => response);
           const ERROR_STATUS = 404;
           if (result.status === ERROR_STATUS) setError(true);
-          else history.push('/test');
+          else history.push('/customer/products');
         } }
         className="login-forms"
       >
