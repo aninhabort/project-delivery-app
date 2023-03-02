@@ -1,5 +1,5 @@
-const { User } = require('../database/models');
 const md5 = require('md5');
+const { User } = require('../database/models');
 
 const findUserByEmail = async (user) => {
   const newPassword = md5(user.password);
