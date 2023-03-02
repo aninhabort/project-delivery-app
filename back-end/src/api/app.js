@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const LoginRouter = require('../routes/login.router');
 
-var corsOptions = {
+const corsOptions = {
   origin: 'http://localhost:3000',
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
 };
