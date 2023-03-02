@@ -14,7 +14,6 @@ const validateUserRegister = async (req, res, next) => {
   next();
 };
 
-
 module.exports = {
   validateUserRegister,
-}
+};

@@ -5,7 +5,6 @@ const LoginRouter = require('../routes/login.router');
 const RegisterRouter = require('../routes/user.router');
 const CustomerRouter = require('../routes/customer.router');
 
-
 const corsOptions = {
   origin: 'http://localhost:3000',
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
@@ -24,6 +23,5 @@ app.use('/login', LoginRouter);
 app.use('/register', RegisterRouter);
 
 app.use('/customer', CustomerRouter);
-
 
 module.exports = app;

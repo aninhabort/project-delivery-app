@@ -12,6 +12,7 @@ router.post(
   findUserByName,
   findUserByEmail,
   validateUserRegister,
-  UserController.registerUser);
+  UserController.registerUser,
+);
 
 module.exports = router;
