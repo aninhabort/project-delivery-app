@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Login from './pages/login';
+import { Login, Register } from './pages';
 import './App.css';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <Redirect to="/login" />
       </Route>
       <Route exact path="/login" component={ Login } />
+      <Route exact path="/register" component={ Register } />
     </Switch>
   );
 }

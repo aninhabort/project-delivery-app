@@ -58,7 +58,7 @@ export default function Login() {
           Email
           <input
             data-testid="common_login__input-email"
-            id="email"
+            className="email"
             name="email"
             type="email"
             onChange={ (e) => handleChange(setEmail, e) }
@@ -69,7 +69,7 @@ export default function Login() {
           <input
             data-testid="common_login__input-password"
             type="password"
-            id="password"
+            className="password"
             name="password"
             onChange={ (e) => handleChange(setPassword, e) }
           />
@@ -87,6 +87,7 @@ export default function Login() {
             data-testid="common_login__button-register"
             type="submit"
             className="button-create-user"
+            onClick={ () => (history.push('/register')) }
           >
             Ainda não tenho conta
           </button>

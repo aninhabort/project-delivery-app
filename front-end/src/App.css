@@ -4,32 +4,32 @@
 }
 
 .home {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 250px;
   justify-content: center;
-  align-items: center;
+  margin-top: 250px;
 }
 
 .login-forms {
   align-content: center;
   background-color: rgb(127, 228, 127);
-  border-radius: 5px; 
+  border-radius: 5px;
   flex-flow: column wrap;
-  width: 200px;
   height: 200px;
   padding: 15px;
+  width: 200px;
 }
 
-#email, #password {
-  background-color: rgb(255, 255, 255);
+.email, .password {
+  background-color: white;
   border: none;
   border-radius: 5px;
-  padding: 4px;
+  height: 18px;
   margin-bottom: 10px;
   margin-top: 5px;
+  padding: 4px;
   width: 190px;
-  height: 18px;
 }
 
 .buttons {
@@ -41,8 +41,8 @@
   background-color: rgb(127, 228, 127);
   border: 2px solid #464646;
   border-radius: 5px;
-  padding: 5px 10px;
   margin: 8px;
+  padding: 5px 10px;
   width: 200px;
 }
 
