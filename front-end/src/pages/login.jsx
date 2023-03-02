@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import requestPost from '../helpers/axios.requests';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -6,6 +8,9 @@ export default function Login() {
   const [isValidEmail, setValidEmail] = useState(false);
   const [isValidPassword, setValidPassword] = useState(false);
   const [isButtonDisabled, setButtonDisable] = useState(true);
+  const [loginError, setError] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     const validateEmail = () => {
@@ -25,14 +30,11 @@ export default function Login() {
 
     const checkLoginValidations = () => {
       const validate = (isValidEmail && isValidPassword);
-      console.log(`email: ${isValidEmail}, password: ${isValidPassword}`);
       setButtonDisable(!validate);
     };
 
     checkLoginValidations();
   });
-
-  console.log(`LoginValidation ${isButtonDisabled}`);
 
   const handleChange = (param, e) => {
     const { value } = e.target;
@@ -42,7 +44,16 @@ export default function Login() {
   return (
     <div className="home">
       <h1>Delivery</h1>
-      <form className="login-forms">
+      <form
+        onSubmit={ async (e) => {
+          e.preventDefault();
+          const result = await requestPost('http://localhost:3001/login', { email, password }).then((response) => response).catch(({ response }) => response);
+          const ERROR_STATUS = 404;
+          if (result.status === ERROR_STATUS) setError(true);
+          else history.push('/customer/products');
+        } }
+        className="login-forms"
+      >
         <label htmlFor="email">
           Email
           <input
@@ -79,6 +90,13 @@ export default function Login() {
           >
             Ainda não tenho conta
           </button>
+          { loginError === true && (
+            <p
+              data-testid="common_login__element-invalid-email"
+            >
+              E-mail inválido
+            </p>
+          )}
         </div>
       </form>
     </div>
