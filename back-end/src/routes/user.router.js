@@ -9,10 +9,10 @@ const router = Router();
 
 router.post(
   '/',
-  findUserByName,
-  findUserByEmail,
   validateUserRegister,
   UserController.registerUser,
+  findUserByName,
+  findUserByEmail,
 );
 
 module.exports = router;

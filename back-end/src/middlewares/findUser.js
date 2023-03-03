@@ -1,23 +1,21 @@
-const UsersModel = require('../database/models/users');
+const { User } = require('../database/models');
 
 const findUserByName = async (req, res, next) => {
-  const { name, email, password } = req.body;
-  const foundUser = await UsersModel.findOne({ where: { name } });
+  const { name } = req.body;
+  const foundUser = await User.findOne({ where: { name } });
 
   if (!foundUser) res.status(409).json({ message: 'Conflict' });
 
-  console.log(email, password);
   next();
 };
 
 const findUserByEmail = async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { email } = req.body;
   try {
-    await UsersModel.findOne({ where: { email } });
+    await User.findOne({ where: { email } });
   } catch (err) {
     res.status(409).json({ message: 'Conflict' });
   }
-  console.log(password, name);
   next();
 };
 

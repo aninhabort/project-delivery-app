@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import requestPost from '../helpers/axios.requests';
+import { useHistory } from 'react-router-dom';
+import requestPost from '../helpers/axios.requests';
 import validateRegister from '../helpers/validateRegister';
 
 export default function Register() {
@@ -8,6 +9,8 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [loginError, setError] = useState(false);
 
+  const history = useHistory();
+
   const handleChange = (param, e) => {
     const { value } = e.target;
     param(value);
@@ -15,7 +18,6 @@ export default function Register() {
 
   const button = () => {
     const test = validateRegister(name, email, password);
-    console.log(test);
     return !test;
   };
   button();
@@ -25,10 +27,11 @@ export default function Register() {
       className="register-forms"
       onSubmit={ async (e) => {
         e.preventDefault();
-        const result = await requestPost('http://localhost:3001/register', { name, email, password }).then((response) => response).catch(({ response }) => response);
-        const ERROR_STATUS = 404;
+        const role = 'customer';
+        const result = await requestPost('http://localhost:3001/register', { name, email, password, role }).then((response) => response).catch(({ response }) => response);
+        const ERROR_STATUS = 409;
         if (result.status === ERROR_STATUS) setError(true);
-        else console.log('erro');
+        else history.push('/customer/products');
       } }
     >
       <label htmlFor="name">
@@ -70,9 +73,9 @@ export default function Register() {
       </button>
       { loginError === true && (
         <p
-          data-testid="common_login__element-invalid-email"
+          data-testid="common_register__element-invalid_register"
         >
-          E-mail inválido
+          Email já cadastrado.
         </p>
       )}
     </form>
