@@ -1,19 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function Navbar({ userName }) {
   return (
     <nav>
       <Link
         data-testid="customer_products__element-navbar-link-products"
-        href="/products"
+        to="/products"
       >
         PRODUTOS
       </Link>
       <Link
         data-testid="customer_products__element-navbar-link-orders"
-        href="/orders"
+        to="/orders"
       >
         MEUS PEDIDOS
       </Link>

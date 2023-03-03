@@ -5,4 +5,20 @@ const requestPost = async (URL, data) => {
   return response;
 };
 
-export default requestPost;
+const axiosGetAll = async (URL) => {
+  try {
+    const res = await axios({
+      method: 'get',
+      url: URL,
+    });
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export {
+  requestPost,
+  axiosGetAll,
+};

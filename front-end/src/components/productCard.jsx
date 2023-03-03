@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ProductCard({ product }) {
-  const { id, quantity, name, price, urlImage } = product;
+  const { id, name, price, urlImage } = product;
+  const quantity = 0;
   return (
     <li>
       <p
@@ -15,6 +16,11 @@ export default function ProductCard({ product }) {
         src={ urlImage }
         alt={ name }
       />
+      <h3
+        data-testid={ `customer_products__element-card-title-${id}` }
+      >
+        { name }
+      </h3>
       <button
         data-testid={ `customer_products__button-card-rm-item-${id}` }
         type="button"
@@ -28,7 +34,7 @@ export default function ProductCard({ product }) {
 
       />
       <button
-        data-testid={ `customer_products__button-card-rm-item-${id}` }
+        data-testid={ `customer_products__button-card-add-item-${id}` }
         type="button"
       >
         +
@@ -40,7 +46,6 @@ export default function ProductCard({ product }) {
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    quantity: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     urlImage: PropTypes.string.isRequired,

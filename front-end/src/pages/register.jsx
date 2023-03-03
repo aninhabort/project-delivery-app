@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import requestPost from '../helpers/axios.requests';
+import { requestPost } from '../helpers/axios.requests';
 import validateRegister from '../helpers/validateRegister';
 
 export default function Register() {
