@@ -29,3 +29,12 @@ export const invalidRegistry = {
   'role': 'customer',
   'password': '$#zebirita#$',
 };
+
+export const invalidBySchemaE = 'zebiritaemail.com';
+
+export const invalidBySchemaN = 'Zé';
+
+export const invalidBySchemaP = '1';
+
+export const invalidBySchemaR = 'oi';
+

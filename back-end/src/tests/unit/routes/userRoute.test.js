@@ -16,10 +16,10 @@ describe('At User Route should', function () {
     expect(response).to.be.deep.equal(validToken);
   });
 
-  it('02 - Gets error message when register an invalid user', async function () {
+  it('02 - Gets error message when register an user that already exists', async function () {
     sinon.stub(UserController, 'post').resolves(invalidRegistryMessage);
     const response = await UserController.registerUser(invalidRegistry);
     expect(response.message).to.be.deep.equal(invalidRegistryMessage);
   });
-
+  
 });
