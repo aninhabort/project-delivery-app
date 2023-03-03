@@ -8,7 +8,7 @@ const validateUserRegister = async (req, res, next) => {
 
   if (user.error) {
     const { message } = user.error.details[0];
-    return res.status(400).json({ message })
+    return res.status(400).json({ message });
   }
 
   console.log(newUserData);

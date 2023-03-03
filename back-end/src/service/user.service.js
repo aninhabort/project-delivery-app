@@ -9,7 +9,6 @@ const checkEmailExistence = async (email) => {
   }
 };
 
-
 const registerUser = async (name, email, password, role) => {
   await checkEmailExistence(email);
   
