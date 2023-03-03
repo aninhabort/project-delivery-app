@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/products', CustomerController.getAll);
 
-router.get('/products', CustomerController.getOne);
+router.get('/products/:id', CustomerController.getOne);
 
 
 module.exports = router;

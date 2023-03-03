@@ -8,7 +8,7 @@ const getAll = async (_req, res) => {
 };
 
 const getOne = async (req, res) => {
-    const { id } = req.body; 
+    const { id } = req.headers; 
     const getProductToCart = await CustomerService.getOne(id);
     return res.status(200).json(getProductToCart);
 };
