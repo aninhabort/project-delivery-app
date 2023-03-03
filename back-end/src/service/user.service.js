@@ -14,7 +14,7 @@ const getUser = async (id) => {
   const infoUser = await User.findOne(id);
   const { password: _, ...userWithoutPassword } = infoUser;
   return userWithoutPassword;
-}
+};
 
 const registerUser = async (name, email, password, role) => {
   await checkEmailExistence(email);
@@ -32,5 +32,4 @@ const registerUser = async (name, email, password, role) => {
 module.exports = {
   registerUser,
   getUser,
-  registerUser,
 };
