@@ -6,9 +6,9 @@ import sinon from 'sinon';
 
 import LoginController from '../../../controller/login.controller';
 
-import { loginPost, loginResponse } from '../mocks/user.test';
+import { loginPost, loginResponse } from '../mocks/user.mock.test';
 
-describe('At Login Router should', function () {
+describe('At Login Route should', function () {
   afterEach(function () { sinon.restore(); });
 
   it('01 - Login user works', async function () {
