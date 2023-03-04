@@ -1,6 +1,6 @@
 import Login from './login';
 import Register from './register';
-import Checkout from './checkout';
+import Checkout from './customer/checkout';
 
 export {
   Login,
