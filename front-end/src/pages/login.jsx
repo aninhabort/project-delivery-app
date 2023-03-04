@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import requestPost from '../helpers/axios.requests';
+import { requestPost } from '../helpers/axios.requests';
 
 export default function Login() {
   const [email, setEmail] = useState('');
