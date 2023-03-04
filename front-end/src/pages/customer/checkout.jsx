@@ -1,16 +1,15 @@
 import { useSelector } from 'react-redux';
 import { selectCart } from '../../redux/cart';
 import Navbar from '../../components/Navbar';
-// import ProductCard from '../../components/productCard';
 
 export default function Checkout() {
   const cart = useSelector(selectCart);
-  // const id = 0;
   return (
     <main>
       <Navbar />
       <div>
         {
+          // componente?
           cart.map((product, i) => (
             <div key={ i }>
               <div
@@ -50,26 +49,23 @@ export default function Checkout() {
                 [REMOVE]
               </div>
             </div>
-
-            // <ProductCard
-            //   key={ product.id }
-            //   product={ { ...product } }
-            // />
           ))
         }
       </div>
-      {/* <p data-testid={ `customer_checkout__element-order-table-unit-price-${id}` } /> */}
-      {/* <p data-testid={ `customer_checkout__element-order-table-sub-total-${id}` } /> */}
-      {/* <p data-testid={ `customer_checkout__element-order-table-remove-${id}` } /> */}
+
       <p data-testid="customer_checkout__element-order-total-price" />
+
       <select data-testid="customer_checkout__select-seller">
         <option value="seller">seller</option>
       </select>
+
       <input type="text" data-testid="customer_checkout__input-address" />
       <input type="text" data-testid="customer_checkout__input-address-number" />
+
       <button type="button" data-testid="customer_checkout__button-submit-order">
         Finalizar
       </button>
+
     </main>
   );
 }
