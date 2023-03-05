@@ -7,7 +7,7 @@ export default function Navbar({ userName }) {
     <nav>
       <Link
         data-testid="customer_products__element-navbar-link-products"
-        to="/products"
+        to="/customer/products"
       >
         PRODUTOS
       </Link>
