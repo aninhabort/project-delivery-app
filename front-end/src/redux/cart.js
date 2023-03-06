@@ -46,11 +46,20 @@ export const Counter = createSlice({
       state.totalValue = 0;
       state.totalValue = getTotalValue(state);
     },
+    removeProduct: (state, { payload }) => {
+      const product = state.products.findIndex(
+        ({ name }) => name === payload.product.name,
+      );
+      // console.log('LOG name', state, payload.product.id);
+      state.products[product].quantity = 0;
+      state.totalValue = 0;
+      state.totalValue = getTotalValue(state);
+    },
   },
 });
 
 export const {
-  Cart, updateProduct, addProduct, decreaseProduct,
+  Cart, updateProduct, addProduct, decreaseProduct, removeProduct,
 } = Counter.actions;
 export const selectCart = (state) => state.cart.products;
 export const selectTotalValue = (state) => state.cart.totalValue;

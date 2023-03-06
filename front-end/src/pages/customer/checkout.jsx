@@ -1,23 +1,17 @@
-import { useSelector } from 'react-redux';
-import { selectCart, selectTotalValue } from '../../redux/cart';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCart, selectTotalValue, removeProduct } from '../../redux/cart';
 import Navbar from '../../components/Navbar';
 
 export default function Checkout() {
+  // const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
   const cart = useSelector(selectCart).filter((product) => (product.quantity > 0));
   const totalValue = useSelector(selectTotalValue);
 
-  const remove = (i) => {
-    const target = Number(i.target.attributes[1].nodeValue.split('-').pop());
-    // console.log('LOG target', target);
-    console.log('LOG cart <', cart);
-    console.log('prod.id !==', target);
-    const newCart = cart.filter((prod) => prod.id !== target);
-    console.log('LOG cart >', newCart);
-  };
-
   return (
     <main>
-      <Navbar />
+      <Navbar userName="#customerName" />
       <div>
         {
           cart.map((product, i) => (
@@ -63,8 +57,9 @@ export default function Checkout() {
               </div>
               <button
                 type="button"
-                onClick={ remove }
-                // key={ i }
+                onClick={ () => {
+                  dispatch(removeProduct({ product }));
+                } }
                 data-testid={ `customer_checkout__element-order-table-remove-${i}` }
               >
                 Remover
