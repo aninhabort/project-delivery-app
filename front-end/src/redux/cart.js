@@ -48,10 +48,10 @@ export const Counter = createSlice({
     },
     removeProduct: (state, { payload }) => {
       const product = state.products.findIndex(
-        ({ name }) => name === payload.product.name,
+        ({ name }) => name === payload.name,
       );
-      // console.log('LOG name', state, payload.product.id);
       state.products[product].quantity = 0;
+
       state.totalValue = 0;
       state.totalValue = getTotalValue(state);
     },

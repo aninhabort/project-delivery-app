@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { requestPost } from '../helpers/axios.requests';
 import validateRegister from '../helpers/validateRegister';
+import addUserToLocalStorage from '../helpers/addUserLocalStorage';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -27,11 +28,14 @@ export default function Register() {
       className="register-forms"
       onSubmit={ async (e) => {
         e.preventDefault();
-        const role = 'customer';
-        const result = await requestPost('http://localhost:3001/register', { name, email, password, role }).then((response) => response).catch(({ response }) => response);
+        const result = await requestPost('http://localhost:3001/register', { name, email, password }).then((response) => response).catch(({ response }) => response);
         const ERROR_STATUS = 409;
+        console.log(result);
         if (result.status === ERROR_STATUS) setError(true);
-        else history.push('/customer/products');
+        else {
+          addUserToLocalStorage(result.data);
+          history.push('/customer/products');
+        }
       } }
     >
       <label htmlFor="name">

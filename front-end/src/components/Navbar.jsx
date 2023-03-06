@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function Navbar({ userName }) {
+  const history = useHistory();
+
   return (
     <nav>
       <Link
@@ -22,11 +24,16 @@ export default function Navbar({ userName }) {
       >
         {userName}
       </p>
-      <p
+      <button
         data-testid="customer_products__element-navbar-link-logout"
+        onClick={ () => {
+          localStorage.removeItem('user');
+          history.push('/login');
+        } }
+        type="button"
       >
         Sair
-      </p>
+      </button>
     </nav>
   );
 }

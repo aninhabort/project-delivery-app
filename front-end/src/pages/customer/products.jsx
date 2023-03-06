@@ -8,7 +8,6 @@ import { axiosGetAll } from '../../helpers/axios.requests';
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const nameX = 'MeuNome';
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
   const totalPrice = useSelector(selectTotalValue);
@@ -26,7 +25,7 @@ export default function Products() {
   return (
     <div>
       <Navbar
-        userName={ nameX }
+        userName={ JSON.parse(localStorage.getItem('user')).name }
       />
       <button
         type="button"
