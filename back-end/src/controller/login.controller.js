@@ -18,7 +18,7 @@ const findUserByEmail = async (req, res) => {
   const response = {
     ...userData,
     token,
-  }
+  };
   
   delete response.id;
 

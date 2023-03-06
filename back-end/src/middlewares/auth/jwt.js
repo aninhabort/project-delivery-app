@@ -14,7 +14,7 @@ const generateToken = (user) => jwt.sign({ data: user }, secret, jwtConfig);
 const verifyToken = (req, res, next) => {
   const { authorization: token } = req.headers;
 
-  if(!token) return res.status(401).json({ message: 'Token not found' });
+  if (!token) return res.status(401).json({ message: 'Token not found' });
 
   try {
     jwt.verify(token, secret);
@@ -26,5 +26,5 @@ const verifyToken = (req, res, next) => {
 
 module.exports = { 
   generateToken, 
-  verifyToken 
+  verifyToken,
 };

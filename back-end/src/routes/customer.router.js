@@ -7,5 +7,4 @@ router.get('/products', CustomerController.getAll);
 
 router.get('/products/:id', CustomerController.getOne);
 
-
 module.exports = router;
