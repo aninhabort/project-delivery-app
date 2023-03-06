@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { requestPost } from '../helpers/axios.requests';
+import addUserToLocalStorage from '../helpers/addUserLocalStorage';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -50,7 +51,10 @@ export default function Login() {
           const result = await requestPost('http://localhost:3001/login', { email, password }).then((response) => response).catch(({ response }) => response);
           const ERROR_STATUS = 404;
           if (result.status === ERROR_STATUS) setError(true);
-          else history.push('/customer/products');
+          else {
+            addUserToLocalStorage(result.data);
+            history.push('/customer/products');
+          }
         } }
         className="login-forms"
       >

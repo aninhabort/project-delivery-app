@@ -46,6 +46,15 @@ export const Counter = createSlice({
       state.totalValue = 0;
       state.totalValue = getTotalValue(state);
     },
+    removeProduct: (state, { payload }) => {
+      const product = state.products.findIndex(
+        ({ name }) => name === payload.name,
+      );
+      state.products[product].quantity = 0;
+
+      state.totalValue = 0;
+      state.totalValue = getTotalValue(state);
+    },
   },
 });
 
