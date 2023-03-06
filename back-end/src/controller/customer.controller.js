@@ -2,9 +2,18 @@ require('dotenv').config();
 
 const CustomerService = require('../service/customer.service');
 
-const getAll = async (req, res) => {
+const getAll = async (_req, res) => {
     const getAllProducts = await CustomerService.getAll();
     return res.status(200).json(getAllProducts);
 };
 
-module.exports = { getAll };
+const getOne = async (req, res) => {
+    const { id } = req.headers; 
+    const getProductToCart = await CustomerService.getOne(id);
+    return res.status(200).json(getProductToCart);
+};
+
+module.exports = {
+    getAll,
+    getOne,
+ };

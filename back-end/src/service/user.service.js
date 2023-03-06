@@ -1,5 +1,6 @@
 const md5 = require('md5');
 const { User } = require('../database/models');
+const { generateToken } = require('../middlewares/auth/jwt');
 
 const checkEmailExistence = async (email) => {
   const checkEmail = await User.findOne({ where: { email } });
@@ -9,12 +10,26 @@ const checkEmailExistence = async (email) => {
   }
 };
 
+const getUser = async (id) => {
+  const infoUser = await User.findOne(id);
+  const { password: _, ...userWithoutPassword } = infoUser;
+  return userWithoutPassword;
+};
+
 const registerUser = async (name, email, password, role) => {
   await checkEmailExistence(email);
   
   const newPassword = md5(password);
   const user = await User.create({ name, email, password: newPassword, role: role || 'customer' });
-  return user;
+  
+  const { id } = user;
+
+  const token = generateToken(id);
+
+  return token;
 };
 
-module.exports = { registerUser };
+module.exports = {
+  registerUser,
+  getUser,
+};
