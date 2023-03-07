@@ -9,5 +9,4 @@ router.get('/products/:id', CustomerController.getOne);
 
 router.post('/checkout', CustomerController.checkout);
 
-
 module.exports = router;
