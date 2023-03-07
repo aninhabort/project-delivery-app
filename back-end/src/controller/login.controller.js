@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const { generateToken } = require('../middlewares/auth/jwt');
+
 const loginService = require('../service/login.service');
 
 const findUserByEmail = async (req, res) => {
@@ -11,7 +13,16 @@ const findUserByEmail = async (req, res) => {
     return res.status(404).json({ message: 'Not found' });
   }
 
-  return res.status(200).json(userData);
+  const token = await generateToken(userData);
+
+  const response = {
+    ...userData,
+    token,
+  };
+  
+  delete response.id;
+
+    return res.status(200).json(response);
 };
 
 module.exports = { findUserByEmail };
