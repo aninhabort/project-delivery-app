@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { requestPost } from '../../helpers/axios.requests';
+import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import {
   selectCart, selectTotalValue, removeProduct,
@@ -13,19 +13,24 @@ export default function Checkout() {
   const totalValue = useSelector(selectTotalValue);
   const history = useHistory();
 
-  const orderInfo = {
-    userId: JSON.parse(localStorage.getItem('user')).id,
-    sellerId: 2,
-    totalPrice: totalValue,
-    deliveryAddress: 'test',
-    deliveryNumber: '1',
-    productList: cart,
-    status: 'pendente',
-  };
-
   const checkoutOrder = async () => {
-    const response = await requestPost('http://localhost:3001/customer/checkout', orderInfo);
-    console.log(response);
+    const orderInfo = {
+      userId: JSON.parse(localStorage.getItem('user')).id,
+      sellerId: 2,
+      totalPrice: totalValue,
+      deliveryAddress: 'test',
+      deliveryNumber: '1',
+      productList: cart,
+      status: 'Pendente',
+    };
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    console.log(totalValue);
+    const response = await axios({
+      method: 'post',
+      url: 'http://localhost:3001/customer/checkout',
+      data: orderInfo,
+      headers: { Authorization: token },
+    });
     history.push(`/customer/orders/${response.data}`);
   };
 

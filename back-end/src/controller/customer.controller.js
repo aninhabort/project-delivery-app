@@ -15,6 +15,8 @@ const getOne = async (req, res) => {
 
 const checkout = async (req, res) => {
     const shoppingData = req.body;
+    delete shoppingData.productList;
+    console.log(shoppingData);
     const getCheckout = await CustomerService.checkout(shoppingData);
     const orderId = getCheckout.dataValues.id;
     return res.status(201).json(orderId);

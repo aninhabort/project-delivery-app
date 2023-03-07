@@ -11,7 +11,7 @@ const validateUserRegister = async (req, res, next) => {
     return res.status(400).json({ message });
   }
 
-  console.log(newUserData);
+  // console.log(newUserData);
   console.log(registerSchema.validate(newUserData).error);
   next();
 };
