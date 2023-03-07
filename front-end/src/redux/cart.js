@@ -47,8 +47,9 @@ export const Counter = createSlice({
       state.totalValue = getTotalValue(state);
     },
     removeProduct: (state, { payload }) => {
+      console.log('LOG ', payload);
       const product = state.products.findIndex(
-        ({ name }) => name === payload.name,
+        ({ name }) => name === payload.product.name,
       );
       state.products[product].quantity = 0;
 
