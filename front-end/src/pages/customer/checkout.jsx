@@ -1,13 +1,30 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCart, selectTotalValue, removeProduct } from '../../redux/cart';
 import Navbar from '../../components/Navbar';
+import {
+  selectCart, selectTotalValue, removeProduct,
+} from '../../redux/cart';
 
 export default function Checkout() {
   // const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const cart = useSelector(selectCart).filter((product) => (product.quantity > 0));
   const totalValue = useSelector(selectTotalValue);
+
+  const orderInfo = {
+    totalValue,
+    seller: 'Zé',
+    address: 'pertinho',
+    number: 13,
+    productList: cart };
+
+  const checkoutOrder = (payload) => {
+    const data = payload.orderInfo;
+    console.log('total', data.totalValue);
+    console.log('seller: ', data.seller);
+    console.log('address, number: ', data.address, data.number);
+    console.log('products: ', data.productList);
+  };
 
   return (
     <main>
@@ -85,7 +102,13 @@ export default function Checkout() {
         <input type="text" data-testid="customer_checkout__input-address" />
         <input type="text" data-testid="customer_checkout__input-address-number" />
 
-        <button type="button" data-testid="customer_checkout__button-submit-order">
+        <button
+          type="button"
+          onClick={ () => {
+            checkoutOrder({ orderInfo });
+          } }
+          data-testid="customer_checkout__button-submit-order"
+        >
           Finalizar
         </button>
       </div>
