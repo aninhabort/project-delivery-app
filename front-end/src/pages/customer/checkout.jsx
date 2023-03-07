@@ -8,7 +8,6 @@ import {
 } from '../../redux/cart';
 
 export default function Checkout() {
-  // const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const cart = useSelector(selectCart).filter((product) => (product.quantity > 0));
   const totalValue = useSelector(selectTotalValue);
