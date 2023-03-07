@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -9,6 +9,9 @@ import {
 
 export default function Checkout() {
   const dispatch = useDispatch();
+  const [Address, setAddress] = useState('');
+  const [AddressNumber, setAddressNumber] = useState('');
+  const seller = 'Fulana Pereira';
   const cart = useSelector(selectCart).filter((product) => (product.quantity > 0));
   const totalValue = useSelector(selectTotalValue);
   const history = useHistory();
@@ -17,9 +20,9 @@ export default function Checkout() {
     const orderInfo = {
       userId: JSON.parse(localStorage.getItem('user')).id,
       sellerId: 2,
-      totalPrice: totalValue,
-      deliveryAddress: 'test',
-      deliveryNumber: '1',
+      totalPrice: totalValue.toFixed(2),
+      deliveryAddress: Address,
+      deliveryNumber: AddressNumber,
       productList: cart,
       status: 'Pendente',
     };
@@ -32,6 +35,11 @@ export default function Checkout() {
       headers: { Authorization: token },
     });
     history.push(`/customer/orders/${response.data}`);
+  };
+
+  const handleChange = (param, e) => {
+    const { value } = e.target;
+    param(value);
   };
 
   return (
@@ -104,16 +112,22 @@ export default function Checkout() {
       <div>
 
         <select data-testid="customer_checkout__select-seller">
-          <option value="seller">seller</option>
+          <option value={ seller }>{ seller }</option>
         </select>
 
         <input
+          className="adressNumber"
+          name="adressNumber"
           type="text"
           data-testid="customer_checkout__input-address"
+          onChange={ (e) => handleChange(setAddress, e) }
         />
         <input
+          className="adress"
+          name="adress"
           type="text"
           data-testid="customer_checkout__input-address-number"
+          onChange={ (e) => handleChange(setAddressNumber, e) }
         />
 
         <button
