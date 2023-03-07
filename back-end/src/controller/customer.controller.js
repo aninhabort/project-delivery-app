@@ -13,7 +13,15 @@ const getOne = async (req, res) => {
     return res.status(200).json(getProductToCart);
 };
 
+const checkout = async (req, res) => {
+    const shoppingData = req.body;
+    const getCheckout = await CustomerService.checkout(shoppingData);
+    const orderId = getCheckout.dataValues.id;
+    return res.status(201).json(orderId);
+};
+
 module.exports = {
     getAll,
     getOne,
+    checkout,
  };

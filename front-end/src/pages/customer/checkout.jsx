@@ -1,5 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { requestPost } from '../../helpers/axios.requests';
 import Navbar from '../../components/Navbar';
 import {
   selectCart, selectTotalValue, removeProduct,
@@ -10,20 +12,22 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart).filter((product) => (product.quantity > 0));
   const totalValue = useSelector(selectTotalValue);
+  const history = useHistory();
 
   const orderInfo = {
-    totalValue,
-    seller: 'Zé',
-    address: 'pertinho',
-    number: 13,
-    productList: cart };
+    userId: JSON.parse(localStorage.getItem('user')).id,
+    sellerId: 2,
+    totalPrice: totalValue,
+    deliveryAddress: 'test',
+    deliveryNumber: '1',
+    productList: cart,
+    status: 'pendente',
+  };
 
-  const checkoutOrder = (payload) => {
-    const data = payload.orderInfo;
-    console.log('total', data.totalValue);
-    console.log('seller: ', data.seller);
-    console.log('address, number: ', data.address, data.number);
-    console.log('products: ', data.productList);
+  const checkoutOrder = async () => {
+    const response = await requestPost('http://localhost:3001/customer/checkout', orderInfo);
+    console.log(response);
+    history.push(`/customer/orders/${response.data}`);
   };
 
   return (
@@ -99,14 +103,18 @@ export default function Checkout() {
           <option value="seller">seller</option>
         </select>
 
-        <input type="text" data-testid="customer_checkout__input-address" />
-        <input type="text" data-testid="customer_checkout__input-address-number" />
+        <input
+          type="text"
+          data-testid="customer_checkout__input-address"
+        />
+        <input
+          type="text"
+          data-testid="customer_checkout__input-address-number"
+        />
 
         <button
           type="button"
-          onClick={ () => {
-            checkoutOrder({ orderInfo });
-          } }
+          onClick={ () => checkoutOrder() }
           data-testid="customer_checkout__button-submit-order"
         >
           Finalizar
