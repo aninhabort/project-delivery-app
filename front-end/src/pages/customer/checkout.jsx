@@ -1,12 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
+import { requestPost } from '../../helpers/axios.requests';
 import {
   selectCart, selectTotalValue, removeProduct,
 } from '../../redux/cart';
 
 export default function Checkout() {
-  // const [products, setProducts] = useState([]);
+  const history = useHistory();
   const dispatch = useDispatch();
   const cart = useSelector(selectCart).filter((product) => (product.quantity > 0));
   const totalValue = useSelector(selectTotalValue);
@@ -18,12 +20,17 @@ export default function Checkout() {
     number: 13,
     productList: cart };
 
-  const checkoutOrder = (payload) => {
+  const checkoutOrder = async (payload) => {
     const data = payload.orderInfo;
-    console.log('total', data.totalValue);
-    console.log('seller: ', data.seller);
-    console.log('address, number: ', data.address, data.number);
+    const response = await requestPost('http://localhost:3001/customer/checkout/', data);
+
+    // console.log('total', data.totalValue);
+    // console.log('seller: ', data.seller);
+    // console.log('address, number: ', data.address, data.number);
     console.log('products: ', data.productList);
+    console.log('response back: ', response);
+    const id = 1;
+    history.push(`/customer/orders/${id}`);
   };
 
   return (
