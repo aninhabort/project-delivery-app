@@ -25,8 +25,18 @@ const checkout = async (req, res) => {
     return res.status(201).json(orderId);
 };
 
+const getCart = async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    
+    const getAllProductsCart = await CustomerService.getCart(id);
+    // const getAllProductsCart = await CustomerService.getCart();
+    return res.status(200).json(getAllProductsCart);
+};
+
 module.exports = {
     getAll,
     getOne,
     checkout,
+    getCart,
  };

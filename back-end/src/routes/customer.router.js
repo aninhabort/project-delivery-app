@@ -13,4 +13,8 @@ router.post('/checkout',
     verifyToken,
     CustomerController.checkout);
 
+router.get('/orderDetails/:id', CustomerController.getCart);
+// router.get('/orderDetails/', CustomerController.getCart);
+
+
 module.exports = router;

@@ -17,9 +17,13 @@ const createSaleProduct = async ({ saleId, productId, quantity }) => {
   }
 };
 
+// const getCart = async (saleId) => SaleProduct.findAll({ where: { saleId } })
+const getCart = async (saleId) => SaleProduct.findAll({ where: { saleId } });
+
 module.exports = { 
   getAll,
   getOne,
   checkout,
   createSaleProduct,
+  getCart,
  };
