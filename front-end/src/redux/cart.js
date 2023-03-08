@@ -48,7 +48,7 @@ export const Counter = createSlice({
     },
     removeProduct: (state, { payload }) => {
       const product = state.products.findIndex(
-        ({ name }) => name === payload.name,
+        ({ name }) => name === payload.product.name,
       );
       state.products[product].quantity = 0;
 
@@ -59,7 +59,7 @@ export const Counter = createSlice({
 });
 
 export const {
-  Cart, updateProduct, addProduct, decreaseProduct,
+  Cart, updateProduct, addProduct, decreaseProduct, removeProduct,
 } = Counter.actions;
 export const selectCart = (state) => state.cart.products;
 export const selectTotalValue = (state) => state.cart.totalValue;

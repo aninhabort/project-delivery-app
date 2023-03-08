@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Login, Register, Products } from './pages';
+import { Login, Register, Products, Checkout, Order } from './pages';
 import './App.css';
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
       <Route exact path="/login" component={ Login } />
       <Route exact path="/register" component={ Register } />
       <Route exact path="/customer/products" component={ Products } />
+      <Route exact path="/customer/checkout" component={ Checkout } />
+      <Route exact path="/customer/orders" component={ Order } />
     </Switch>
   );
 }

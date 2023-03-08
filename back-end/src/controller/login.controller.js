@@ -20,7 +20,7 @@ const findUserByEmail = async (req, res) => {
     token,
   };
   
-  delete response.id;
+  // delete response.id;
 
     return res.status(200).json(response);
 };
