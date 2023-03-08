@@ -8,7 +8,8 @@ const getOne = async (id) => Product.findOne({ where: { id } });
 
 const checkout = async (shoppingData) => Sale.create(shoppingData);
 
-const createSaleProduct = async ({ saleId, productId, quantity }) => await SaleProduct.create({ saleId, productId, quantity });
+const createSaleProduct = async ({ saleId, productId, quantity }) => SaleProduct
+.create({ saleId, productId, quantity });
 
 const getCustomerOrders = async (userId) => Sale.findAll({ where: { userId } });
 

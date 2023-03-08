@@ -21,8 +21,10 @@ const checkout = async (req, res) => {
     const getCheckout = await CustomerService.checkout(shoppingData);
     const orderId = getCheckout.dataValues.id;
 
-    const test = productList
-        .map(async (newProduct) => await CustomerService.createSaleProduct({ ...newProduct, saleId: orderId }));
+    productList.map(
+         async (newProduct) => CustomerService
+         .createSaleProduct({ ...newProduct, saleId: orderId }),
+        );
 
     return res.status(201).json(orderId);
 };

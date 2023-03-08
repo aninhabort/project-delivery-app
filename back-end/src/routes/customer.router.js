@@ -17,6 +17,6 @@ router.post('/checkout',
 
 router.get('/orders',
     verifyToken,
-    CustomerController.getCustumerOrders)
+    CustomerController.getCustumerOrders);
 
 module.exports = router;
