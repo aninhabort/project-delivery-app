@@ -15,10 +15,13 @@ const getOne = async (req, res) => {
 
 const checkout = async (req, res) => {
     const shoppingData = req.body;
+    const { productList } = shoppingData;
     delete shoppingData.productList;
-    console.log(shoppingData);
     const getCheckout = await CustomerService.checkout(shoppingData);
     const orderId = getCheckout.dataValues.id;
+    productList.map(
+        (newProduct) => CustomerService.createSaleProduct({ ...newProduct, saleId: orderId }),
+      );
     return res.status(201).json(orderId);
 };
 

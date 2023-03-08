@@ -17,15 +17,17 @@ export default function Checkout() {
   const history = useHistory();
 
   const checkoutOrder = async () => {
+    const saleProduct = cart.map(({ id, quantity }) => ({ productId: id, quantity }));
     const orderInfo = {
       userId: JSON.parse(localStorage.getItem('user')).id,
       sellerId: 2,
       totalPrice: totalValue.toFixed(2),
       deliveryAddress: Address,
       deliveryNumber: AddressNumber,
-      productList: cart,
+      productList: saleProduct,
       status: 'Pendente',
     };
+    console.log(orderInfo);
     const { token } = JSON.parse(localStorage.getItem('user'));
     console.log(totalValue);
     const response = await axios({
