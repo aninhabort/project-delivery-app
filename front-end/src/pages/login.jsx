@@ -35,6 +35,14 @@ export default function Login() {
     };
 
     checkLoginValidations();
+
+    const verifyLocalStorage = () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        history.push('/customer/products');
+      }
+    };
+    verifyLocalStorage();
   });
 
   const handleChange = (param, e) => {

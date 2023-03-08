@@ -6,6 +6,8 @@ import Navbar from '../../components/Navbar';
 import ProductCard from '../../components/productCard';
 import { axiosGetAll } from '../../helpers/axios.requests';
 
+import './products.css';
+
 export default function Products() {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
@@ -24,9 +26,7 @@ export default function Products() {
 
   return (
     <div>
-      <Navbar
-        userName={ JSON.parse(localStorage.getItem('user')).name }
-      />
+      <Navbar />
       <button
         type="button"
         data-testid="customer_products__button-cart"

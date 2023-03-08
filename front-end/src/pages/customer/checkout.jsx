@@ -27,9 +27,7 @@ export default function Checkout() {
       productList: saleProduct,
       status: 'Pendente',
     };
-    console.log(orderInfo);
     const { token } = JSON.parse(localStorage.getItem('user'));
-    console.log(totalValue);
     const response = await axios({
       method: 'post',
       url: 'http://localhost:3001/customer/checkout',
@@ -46,7 +44,7 @@ export default function Checkout() {
 
   return (
     <main>
-      <Navbar userName="#customerName" />
+      <Navbar />
       <div>
         {
           cart.map((product, i) => (
