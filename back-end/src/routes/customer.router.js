@@ -5,15 +5,18 @@ const { verifyToken } = require('../middlewares/auth/jwt');
 
 const router = Router();
 
-router.get('/products', CustomerController.getAll);
+router.get('/products',
+    CustomerController.getAll);
 
-router.get('/products/:id', CustomerController.getOne);
+router.get('/products/:id',
+    CustomerController.getOne);
 
 router.post('/checkout',
     verifyToken,
     CustomerController.checkout);
 
-router.get('/orderDetails/:id', CustomerController.getCart);
-// router.get('/orderDetails/', CustomerController.getCart);
+router.get('/orders',
+    verifyToken,
+    CustomerController.getCustumerOrders);
 
 module.exports = router;

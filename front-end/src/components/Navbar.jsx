@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-export default function Navbar({ userName }) {
+export default function Navbar() {
   const history = useHistory();
 
   return (
@@ -15,14 +14,14 @@ export default function Navbar({ userName }) {
       </Link>
       <Link
         data-testid="customer_products__element-navbar-link-orders"
-        to="/orders"
+        to="/customer/orders"
       >
         MEUS PEDIDOS
       </Link>
       <p
         data-testid="customer_products__element-navbar-user-full-name"
       >
-        {userName}
+        { JSON.parse(localStorage.getItem('user')).name }
       </p>
       <button
         data-testid="customer_products__element-navbar-link-logout"
@@ -37,7 +36,3 @@ export default function Navbar({ userName }) {
     </nav>
   );
 }
-
-Navbar.propTypes = {
-  userName: PropTypes.string.isRequired,
-};
