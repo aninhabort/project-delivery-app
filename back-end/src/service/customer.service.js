@@ -13,8 +13,8 @@ const getCustomerOrders = async (userId) => Sale.findAll({ where: { userId } });
 
 const modifyOrderStatus = async (status, orderId) => Sale.update(
   { status: 'Entregue' },
-  { where: { orderId }});
-
+  { where: { orderId } },
+);
 
 module.exports = { 
   getAll,

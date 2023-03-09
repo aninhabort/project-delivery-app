@@ -28,5 +28,4 @@ app.use('/customer', CustomerRouter);
 
 app.use('/seller', SellerRouter);
 
-
 module.exports = app;

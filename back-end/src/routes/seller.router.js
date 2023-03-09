@@ -1,6 +1,6 @@
 const Router = require('express');
 
-const SellerController = require('../controller/seller.controller')
+const SellerController = require('../controller/seller.controller');
 
 const { verifyToken } = require('../middlewares/auth/jwt');
 
@@ -9,7 +9,7 @@ const router = Router();
 router.get(
     '/orders',
     verifyToken,
-    SellerController.getSellerOrders
+    SellerController.getSellerOrders,
 );
 
 router.get(
@@ -21,7 +21,7 @@ router.get(
 router.patch(
     '/orders/:id',
     verifyToken,
-    SellerController.modifyOrderStatus
+    SellerController.modifyOrderStatus,
 );
 
 module.exports = router;

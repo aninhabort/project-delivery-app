@@ -10,11 +10,11 @@ const getSellerOrders = async (req, res) => {
 
 const getOrderDetails = async (req, res) => {
     const { orderId } = req.headers;
-    const getOrderDetails = await SellerService.getOrderDetails(orderId);
-    res.status(201).json(getOrderDetails);
+    const orderDetails = await SellerService.getOrderDetails(orderId);
+    res.status(201).json(orderDetails);
 };
 
-const modifyOrderStatus = async (req,res) => {
+const modifyOrderStatus = async (req, res) => {
     const { status, orderId } = req.headers;
     const updateStatus = await SellerService.modifyOrderStatus(status, orderId);
     res.status(201).json(updateStatus);

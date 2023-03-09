@@ -7,30 +7,30 @@ const router = Router();
 
 router.get(
     '/products',
-    CustomerController.getAll
+    CustomerController.getAll,
 );
 
 router.get(
     '/products/:id',
-    CustomerController.getOne
+    CustomerController.getOne,
 );
 
 router.post(
     '/checkout',
     verifyToken,
-    CustomerController.checkout
+    CustomerController.checkout,
 );
 
 router.get(
     '/orders',
     verifyToken,
-    CustomerController.getCustumerOrders
+    CustomerController.getCustumerOrders,
 );
 
 router.patch(
     '/orders/:id',
     verifyToken,
-    CustomerController.modifyOrderStatus
+    CustomerController.modifyOrderStatus,
 );
 
 router.get('/orders/:id',
