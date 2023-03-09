@@ -17,16 +17,27 @@ const checkout = async (req, res) => {
     const shoppingData = req.body;
     const { productList } = shoppingData;
     delete shoppingData.productList;
+
     const getCheckout = await CustomerService.checkout(shoppingData);
     const orderId = getCheckout.dataValues.id;
+
     productList.map(
-        (newProduct) => CustomerService.createSaleProduct({ ...newProduct, saleId: orderId }),
-      );
+         async (newProduct) => CustomerService
+         .createSaleProduct({ ...newProduct, saleId: orderId }),
+        );
+
     return res.status(201).json(orderId);
+};
+
+const getCustumerOrders = async (req, res) => {
+    const { id: userId } = req.headers;
+    const getOrders = await CustomerService.getCustomerOrders(userId);
+    res.status(201).json(getOrders);
 };
 
 module.exports = {
     getAll,
     getOne,
     checkout,
+    getCustumerOrders,
  };
