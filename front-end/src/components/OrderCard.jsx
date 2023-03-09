@@ -10,26 +10,26 @@ export default function OrderCard({ order }) {
 
   return (
     <Link
-      to={ `/customer/orders/${id}` }
+      to={ `/${role}/orders/${id}` }
     >
       <div>
         <p
-          data-testid={ `customer_orders__element-order-id-${id}` }
+          data-testid={ `${role}_orders__element-order-id-${id}` }
         >
           { `Pedido ${id}` }
         </p>
         <p
-          data-testid={ `customer_orders__element-delivery-status-${id}` }
+          data-testid={ `${role}_orders__element-delivery-status-${id}` }
         >
           { status }
         </p>
         <p
-          data-testid={ `customer_orders__element-order-date-${id}` }
+          data-testid={ `${role}_orders__element-order-date-${id}` }
         >
           { date }
         </p>
         <p
-          data-testid={ `customer_orders__element-card-price-${id}` }
+          data-testid={ `${role}_orders__element-card-price-${id}` }
         >
           { totalPrice.replace(/\./g, ',') }
         </p>
