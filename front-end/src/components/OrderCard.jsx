@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import moment from 'moment/moment';
 
 export default function OrderCard({ order }) {
-  const { id, status, saleDate, totalPrice } = order;
+  const { role } = JSON.parse(localStorage.getItem('user'));
+  const { id, status, saleDate, totalPrice, deliveryAddress, deliveryNumber } = order;
   const date = moment(new Date(saleDate)).format('DD/MM/YYYY');
 
   return (
@@ -32,6 +33,13 @@ export default function OrderCard({ order }) {
         >
           { totalPrice.replace(/\./g, ',') }
         </p>
+        { role === 'seller' && (
+          <p
+            data-testid={ `seller_orders__element-card-address-${id}` }
+          >
+            { `${deliveryAddress}, ${deliveryNumber}` }
+          </p>
+        ) }
       </div>
     </Link>
   );
@@ -43,5 +51,7 @@ OrderCard.propTypes = {
     status: PropTypes.string.isRequired,
     saleDate: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     totalPrice: PropTypes.string.isRequired,
+    deliveryAddress: PropTypes.string.isRequired,
+    deliveryNumber: PropTypes.string.isRequired,
   }).isRequired,
 };
