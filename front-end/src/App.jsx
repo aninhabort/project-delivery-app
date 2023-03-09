@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Login, Register, Products, Checkout, Orders, orderDetails } from './pages';
+import { Login, Register, Products, Checkout, Orders, OrderDetails } from './pages';
 import './App.css';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Route exact path="/customer/products" component={ Products } />
       <Route exact path="/customer/checkout" component={ Checkout } />
       <Route exact path="/customer/orders" component={ Orders } />
-      <Route exact path="/customer/orders/:id" component={ orderDetails } />
+      <Route exact path="/customer/orders/:id" component={ OrderDetails } />
     </Switch>
   );
 }

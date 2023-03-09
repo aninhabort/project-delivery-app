@@ -23,7 +23,6 @@ export default function Products() {
     };
     fetchProducts();
   }, [dispatch]);
-
   return (
     <div>
       <Navbar />
