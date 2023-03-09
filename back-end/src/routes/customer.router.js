@@ -19,4 +19,7 @@ router.get('/orders',
     verifyToken,
     CustomerController.getCustumerOrders);
 
+router.get('/orders/:id',
+    CustomerController.getOrder);    
+
 module.exports = router;

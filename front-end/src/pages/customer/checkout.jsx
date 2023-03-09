@@ -28,6 +28,9 @@ export default function Checkout() {
       status: 'Pendente',
     };
     const { token } = JSON.parse(localStorage.getItem('user'));
+    console.log('checkoutOrder: ', saleProduct);
+    console.log('orderInfo: ', orderInfo);
+    console.log('token: ', token);
     const response = await axios({
       method: 'post',
       url: 'http://localhost:3001/customer/checkout',
