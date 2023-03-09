@@ -13,6 +13,20 @@ export default function Login() {
 
   const history = useHistory();
 
+  const verifyUserRole = () => {
+    const { role } = JSON.parse(localStorage.getItem('user'));
+    switch (role) {
+    case 'seller':
+      history.push(`/${role}/orders`);
+      break;
+    case 'administrator':
+      history.push(`/${role}/manage`);
+      break;
+    default:
+      history.push(`/${role}/products`);
+    }
+  };
+
   useEffect(() => {
     const validateEmail = () => {
       const validate = /^\S+@[a-z0-9]+\.[a-z]+$/i.test(email);
@@ -39,7 +53,8 @@ export default function Login() {
     const verifyLocalStorage = () => {
       const user = JSON.parse(localStorage.getItem('user'));
       if (user) {
-        history.push('/customer/products');
+        console.log();
+        verifyUserRole();
       }
     };
     verifyLocalStorage();
@@ -61,7 +76,7 @@ export default function Login() {
           if (result.status === ERROR_STATUS) setError(true);
           else {
             addUserToLocalStorage(result.data);
-            history.push('/customer/products');
+            verifyUserRole();
           }
         } }
         className="login-forms"

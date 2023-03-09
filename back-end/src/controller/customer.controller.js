@@ -43,10 +43,18 @@ const getOrder = async (req, res) => {
     return res.status(200).json(getOrderDetails);
 };
 
+const modifyOrderStatus = async (req,res) => {
+    const { status, orderId } = req.headers;
+    const updateStatus = await CustomerService.modifyOrderStatus(status, orderId);
+    res.status(201).json(updateStatus);
+};
+
 module.exports = {
     getAll,
     getOne,
     checkout,
     getCustumerOrders,
     getOrder,
+    modifyOrderStatus,
  };
+ 
