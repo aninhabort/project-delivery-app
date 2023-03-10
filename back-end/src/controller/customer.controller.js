@@ -32,7 +32,20 @@ const checkout = async (req, res) => {
 const getCustumerOrders = async (req, res) => {
     const { id: userId } = req.headers;
     const getOrders = await CustomerService.getCustomerOrders(userId);
-    res.status(201).json(getOrders);
+    // console.log('getCustomersOrder', getCustumerOrders);
+    return res.status(201).json(getOrders);
+};
+
+const getOrder = async (req, res) => {
+    const { id } = req.params;
+    const getOrderDetails = await CustomerService.getOrder(id);
+    return res.status(200).json(getOrderDetails);
+};
+
+const modifyOrderStatus = async (req, res) => {
+    const { status, orderId } = req.headers;
+    const updateStatus = await CustomerService.modifyOrderStatus(status, orderId);
+    res.status(201).json(updateStatus);
 };
 
 module.exports = {
@@ -40,4 +53,6 @@ module.exports = {
     getOne,
     checkout,
     getCustumerOrders,
+    getOrder,
+    modifyOrderStatus,
  };
