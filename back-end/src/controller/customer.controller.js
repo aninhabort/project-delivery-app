@@ -37,9 +37,8 @@ const getCustumerOrders = async (req, res) => {
 };
 
 const getOrder = async (req, res) => {
-    const { id } = req.params; 
+    const { id } = req.params;
     const getOrderDetails = await CustomerService.getOrder(id);
-    // console.log('orderDetails ', getOrderDetails);
     return res.status(200).json(getOrderDetails);
 };
 

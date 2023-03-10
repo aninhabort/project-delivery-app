@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
-// import OrderDetailsCard from '../../components/OrderDetailCard';
+import OrderDetailsCard from '../../components/OrderDetailCard';
 
 export default function OrderDetails() {
   const [getProducts, setProducts] = useState([]);
@@ -20,10 +20,12 @@ export default function OrderDetails() {
     };
     fetchProducts();
   }, [id, token]);
-  console.log(getProducts);
+
   return (
     <main>
       <Navbar />
+      {/* wm */}
+      <OrderDetailsCard order={ getProducts } />
     </main>
   );
 }
