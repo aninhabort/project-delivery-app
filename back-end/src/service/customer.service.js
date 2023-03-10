@@ -11,7 +11,7 @@ const createSaleProduct = async ({ saleId, productId, quantity }) => SaleProduct
 
 const getCustomerOrders = async (userId) => Sale.findAll({ where: { userId } });
 
-const getOrder = async (saleId) => SaleProduct.findAll({ where: { saleId } })
+const getOrder = async (saleId) => SaleProduct.findAll({ where: { saleId } });
 
 const modifyOrderStatus = async (status, orderId) => Sale.update(
   { status: 'Entregue' },
