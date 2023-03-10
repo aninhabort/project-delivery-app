@@ -8,9 +8,9 @@ const getSaleProduct = async (saleId) => SaleProduct.findAll({ where: { saleId }
 
 const getProductByID = async (id) => Product.findOne({ where: { id } });
 
-const modifyOrderStatus = async (status, orderId) => Sale.update(
+const modifyOrderStatus = async (status, id) => Sale.update(
     { status },
-    { where: { orderId } },
+    { where: { id } },
 );
 
 module.exports = { 
