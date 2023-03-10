@@ -11,9 +11,8 @@ const checkEmailExistence = async (email) => {
 };
 
 const getUser = async (id) => {
-  const infoUser = await User.findOne(id);
-  const { password: _, ...userWithoutPassword } = infoUser;
-  return userWithoutPassword;
+  const infoUser = await User.findOne({ where: { id } });
+  return infoUser;
 };
 
 const registerUser = async (name, email, password, role) => {

@@ -13,8 +13,8 @@ export default function OrderDetails() {
     const fetchProducts = async () => {
       const response = await axios({
         method: 'GET',
-        url: `http://localhost:3001/customer/orders/${id}`,
-        headers: { Authorization: token },
+        url: `http://localhost:3001/seller/orders/${id}`,
+        headers: { Authorization: token, id },
       });
       setProducts(response.data);
     };
@@ -25,7 +25,11 @@ export default function OrderDetails() {
     <main>
       <Navbar />
       {/* wm */}
-      <OrderDetailsCard order={ getProducts } />
+      { getProducts.length > 0 && (
+        getProducts.map((products, index) => (
+          <OrderDetailsCard key={ index } item={ index } order={ products } />
+        ))
+      ) }
     </main>
   );
 }
