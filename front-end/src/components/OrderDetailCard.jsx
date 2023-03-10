@@ -16,11 +16,11 @@ export default function OrderDetailsCard({ item, order }) {
     totalPrice,
     quantity,
   } = order;
-  const [isStatus, setStatus] = useState(actualStatus);
+  const [status, setStatus] = useState(actualStatus);
   const productPriceX = Number(productPrice);
 
-  const changeStatus = async () => {
-    switch (actualStatus) {
+  const changeStatus = () => {
+    switch (status) {
     case 'Pendente':
       setStatus('Preparando');
       break;
@@ -33,7 +33,7 @@ export default function OrderDetailsCard({ item, order }) {
   };
 
   useEffect(() => {
-    const updateProductStatus = async (status) => {
+    const updateProductStatus = async () => {
       const response = await axios({
         method: 'PATCH',
         url: `http://localhost:3001/seller/orders/${id}`,
@@ -41,8 +41,9 @@ export default function OrderDetailsCard({ item, order }) {
       });
       setStatus(response.data);
     };
-    updateProductStatus(isStatus);
-  }, [isStatus, id, token]);
+    console.log(status);
+    updateProductStatus();
+  }, [status, id, token]);
 
   const changeStatusButton = () => {
     changeStatus();
@@ -102,7 +103,7 @@ export default function OrderDetailsCard({ item, order }) {
           `${role}_order_details__element-order-details-label-delivery-status-${id}`
         }
       >
-        { isStatus }
+        { status }
       </span>
       { role === 'customer' ? (
         <button
@@ -118,7 +119,7 @@ export default function OrderDetailsCard({ item, order }) {
             type="button"
             data-testid={ `${role}_order_details__button-preparing-check` }
             onClick={ () => changeStatusButton() }
-            disabled={ isStatus !== 'Pendente' }
+            disabled={ status !== 'Pendente' }
           >
             PREPARAR PEDIDO
           </button>
@@ -126,7 +127,7 @@ export default function OrderDetailsCard({ item, order }) {
             type="button"
             data-testid={ `${role}_order_details__button-dispatch-check` }
             onClick={ () => changeStatusButton() }
-            disabled={ (isStatus !== 'Preparando') }
+            disabled={ (status !== 'Preparando') }
           >
             SAIU PARA ENTREGA
           </button>

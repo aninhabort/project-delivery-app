@@ -31,8 +31,9 @@ const getOrderDetails = async (req, res) => {
 
 const modifyOrderStatus = async (req, res) => {
     const { status } = req.headers;
-    // const { id } = req.params;
-    // const updateStatus = await SellerService.modifyOrderStatus(status, id);
+    const { id } = req.params;
+    const test = await SellerService.modifyOrderStatus(status, id);
+    console.log(test);
     res.status(201).json(status);
 };
 
