@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { requestPost } from '../helpers/axios.requests';
 import addUserToLocalStorage from '../helpers/addUserLocalStorage';
+import './Login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -113,7 +114,7 @@ export default function Login() {
           <button
             data-testid="common_login__button-register"
             type="submit"
-            className="button-create-user"
+            className="button-create"
             onClick={ () => (history.push('/register')) }
           >
             Ainda não tenho conta

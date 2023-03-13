@@ -10,7 +10,6 @@ import {
   SellerOrders,
   SellerOrdersDetails,
 } from './pages';
-import './App.css';
 
 function App() {
   return (

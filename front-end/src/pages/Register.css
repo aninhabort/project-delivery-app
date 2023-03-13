@@ -13,7 +13,7 @@
 
 .register-forms {
   align-content: center;
-  background-color: rgb(127, 228, 127);
+  background-color: #fecf7c;
   border-radius: 5px;
   flex-flow: column wrap;
   height: fit-content;
@@ -38,14 +38,14 @@
 }
 
 .button-create-user {
-  background-color: rgb(127, 228, 127);
-  border: 2px solid #464646;
+  background-color: #fecf7c;
+  border: 2px solid #ebb656;
   border-radius: 5px;
   padding: 5px 10px;
   width: 200px;
 }
 
 .button-create-user:hover {
-  background-color: #464646;
+  background-color: #ebb656;
   color: white;
 }

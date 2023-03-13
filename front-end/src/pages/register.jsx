@@ -4,7 +4,7 @@ import { requestPost } from '../helpers/axios.requests';
 import validateRegister from '../helpers/validateRegister';
 import addUserToLocalStorage from '../helpers/addUserLocalStorage';
 
-import './register.css';
+import './Register.css';
 
 export default function Register() {
   const [name, setName] = useState('');
