@@ -8,7 +8,7 @@ const SellerRouter = require('../routes/seller.router');
 
 const corsOptions = {
   origin: 'http://localhost:3000',
-  methods: ['POST', 'GET', 'PUT', 'DELETE'],
+  methods: ['POST', 'GET', 'PUT', 'DELETE', 'PATCH'],
 };
 
 const app = express();

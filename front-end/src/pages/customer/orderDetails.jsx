@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
@@ -7,7 +8,7 @@ import OrderDetailsCard from '../../components/OrderDetailCard';
 export default function OrderDetails() {
   const [getProducts, setProducts] = useState([]);
   const { token } = JSON.parse(localStorage.getItem('user'));
-  const id = 1;
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchProducts = async () => {

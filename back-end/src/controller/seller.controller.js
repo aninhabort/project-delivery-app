@@ -17,7 +17,6 @@ const getOrderDetails = async (req, res) => {
         .map((product) => SellerService.getProductByID(product.productId)));
     const obj = productResult.map((product) => (
         {
-            id: saleProduct.filter((sale) => sale.productId === product.id)[0].saleId,
             sellerName: getSellerName.name,
             productId: product.id,
             productName: product.name,
@@ -31,9 +30,11 @@ const getOrderDetails = async (req, res) => {
 };
 
 const modifyOrderStatus = async (req, res) => {
-    const { status, orderId } = req.headers;
-    const updateStatus = await SellerService.modifyOrderStatus(status, orderId);
-    res.status(201).json(updateStatus);
+    const { status } = req.headers;
+    const { id } = req.params;
+    const test = await SellerService.modifyOrderStatus(status, id);
+    console.log(test);
+    res.status(201).json(status);
 };
 
 module.exports = {
