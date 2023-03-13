@@ -1,0 +1,12 @@
+.order-card {
+  border: 2px solid #ebb656;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 20px;
+  padding: 10px;
+}
+
+.link-order {
+  text-decoration: none;
+}

@@ -1,0 +1,16 @@
+.order-detail-card {
+  border: 2px solid #ebb656;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 20px;
+  padding: 10px;
+}
+
+.button-check, .button-prepare-order, .button-out-for-delivery {
+  background-color: #fecf7c;
+  border: 2px solid #ebb656;
+  border-radius: 5px;
+  margin: 8px;
+  padding: 5px 10px;
+}

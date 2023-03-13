@@ -1,0 +1,36 @@
+.navbar {
+  background-color: #f8e7c7;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.link-products, .link-orders {
+  margin: 10px;
+  text-decoration: none;
+}
+
+.user-and-exit-button {
+  display: flex;
+  flex-flow: row;
+  justify-content: end;
+}
+
+.user-name {
+  border: 2px solid #ebb656;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.button-exit {
+  background-color: #fecf7c;
+  border: 2px solid #ebb656;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px 10px;
+  width: fit-content;
+}
+
+.button-show-cart:hover {
+  background-color: #ebb656;
+}

@@ -1,0 +1,15 @@
+.product {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column;
+  height: 400px;
+  justify-content: center;
+  margin: 30px;
+  padding: 20px;
+  width: 250px;
+}
+
+img {
+  width: 50%;
+}

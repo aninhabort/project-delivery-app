@@ -20,7 +20,7 @@ export default function Orders() {
   }, [id, token]);
   console.log(getOrder.map((item) => item));
   return (
-    <div>
+    <div className="orders">
       <Navbar />
       { getOrder.map((item) => (
         <div key={ item.id }>

@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbar';
 import {
   selectCart, selectTotalValue, removeProduct,
 } from '../../redux/cart';
+import './Checkout.css';
 
 export default function Checkout() {
   const dispatch = useDispatch();
@@ -48,11 +49,11 @@ export default function Checkout() {
   return (
     <main>
       <Navbar />
-      <div>
+      <div className="order-cart">
         {
           cart.map((product, i) => (
             // componente? {
-            <div key={ i }>
+            <div key={ i } className="product-cart">
               <div
                 // key={ i }
                 data-testid={
@@ -97,6 +98,7 @@ export default function Checkout() {
                   dispatch(removeProduct({ product }));
                 } }
                 data-testid={ `customer_checkout__element-order-table-remove-${i}` }
+                className="button-remove"
               >
                 Remover
               </button>
@@ -106,15 +108,23 @@ export default function Checkout() {
         }
       </div>
 
-      <span data-testid="customer_checkout__element-order-total-price">
-        {
-          Number(totalValue).toFixed(2).split('.').join(',')
-        }
-      </span>
+      <div className="total-price">
+        <p className="text-total">Total:</p>
+        <span
+          data-testid="customer_checkout__element-order-total-price"
+        >
+          {
+            Number(totalValue).toFixed(2).split('.').join(',')
+          }
+        </span>
 
-      <div>
+      </div>
 
-        <select data-testid="customer_checkout__select-seller">
+      <div className="checkout">
+        <select
+          data-testid="customer_checkout__select-seller"
+          className="select-user"
+        >
           <option value={ seller }>{ seller }</option>
         </select>
 
@@ -123,6 +133,7 @@ export default function Checkout() {
           name="adressNumber"
           type="text"
           data-testid="customer_checkout__input-address"
+          placeholder="Endereço"
           onChange={ (e) => handleChange(setAddress, e) }
         />
         <input
@@ -130,13 +141,14 @@ export default function Checkout() {
           name="adress"
           type="text"
           data-testid="customer_checkout__input-address-number"
+          placeholder="Número"
           onChange={ (e) => handleChange(setAddressNumber, e) }
         />
-
         <button
           type="button"
           onClick={ () => checkoutOrder() }
           data-testid="customer_checkout__button-submit-order"
+          className="button-checkout"
         >
           Finalizar
         </button>
