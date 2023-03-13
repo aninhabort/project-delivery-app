@@ -68,7 +68,7 @@ export default function Login() {
 
   return (
     <div className="home">
-      <h1>Delivery</h1>
+      <div className="img" />
       <form
         onSubmit={ async (e) => {
           e.preventDefault();
