@@ -16,10 +16,10 @@ img {
 }
 
 .price-product {
-  position: absolute;
   left: 0;
-  top: 0;
   margin: 10px;
+  position: absolute;
+  top: 0;
 }
 
 .product-name-price {
