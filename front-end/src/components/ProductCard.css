@@ -5,8 +5,8 @@
   flex-flow: column wrap;
   height: fit-content;
   margin: 30px;
-  width: 240px;
   position: relative;
+  width: 240px;
 }
 
 img {
@@ -15,10 +15,10 @@ img {
   max-width: 100px;
 }
 
-.price-product{
+.price-product {
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
   margin: 10px;
 }
 

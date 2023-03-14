@@ -31,7 +31,7 @@
   width: 200px;
 }
 
-.email,
+.email, 
 .password {
   background-color: white;
   border: none;
@@ -48,7 +48,7 @@
   flex-flow: column;
 }
 
-.button-login,
+.button-login, 
 .button-create {
   background-color: #fecf7c;
   border: 2px solid #ebb656;
@@ -58,7 +58,7 @@
   width: 200px;
 }
 
-.button-login:hover,
+.button-login:hover, 
 .button-create:hover {
   background-color: #ebb656;
 }
