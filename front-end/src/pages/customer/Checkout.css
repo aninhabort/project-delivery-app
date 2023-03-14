@@ -4,11 +4,11 @@
 }
 
 .product-cart {
+  align-items: center;
   border: 2px solid #ebb656;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  align-items: center;
   padding: 10px;
 }
 
@@ -29,9 +29,9 @@
 }
 
 .select-user {
-  width: 120px;
   height: 20px;
   margin-right: 10px;
+  width: 120px;
 }
 
 .adressNumber, .adress {
