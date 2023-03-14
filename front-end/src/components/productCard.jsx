@@ -10,8 +10,9 @@ export default function ProductCard({ product }) {
   const { id, name, quantity, price, urlImage } = product;
   const dispatch = useDispatch();
   return (
-    <li className="product">
+    <div className="product">
       <p
+        className="price-product"
         data-testid={ `customer_products__element-card-price-${id}` }
       >
         {price.split('.').join(',')}
@@ -21,17 +22,19 @@ export default function ProductCard({ product }) {
         src={ urlImage }
         alt={ name }
       />
-      <h3
-        data-testid={ `customer_products__element-card-title-${id}` }
-      >
-        { name }
-      </h3>
-      <div>
+
+      <div className="product-name-price">
+        <h3
+          data-testid={ `customer_products__element-card-title-${id}` }
+        >
+          { name }
+        </h3>
         <button
           data-testid={ `customer_products__button-card-rm-item-${id}` }
           type="button"
           disabled={ quantity < 1 }
           onClick={ () => dispatch(decreaseProduct({ name })) }
+          className="button-minus"
         >
           -
         </button>
@@ -41,16 +44,18 @@ export default function ProductCard({ product }) {
           onChange={ (event) => {
             dispatch(updateProduct({ name, quantity: event.target.value }));
           } }
+          className="input-quantity"
         />
         <button
           data-testid={ `customer_products__button-card-add-item-${id}` }
           type="button"
           onClick={ () => dispatch(addProduct({ name })) }
+          className="button-add"
         >
           +
         </button>
       </div>
-    </li>
+    </div>
   );
 }
 

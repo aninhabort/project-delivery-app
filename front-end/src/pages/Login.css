@@ -4,14 +4,14 @@
 }
 
 .img {
-  background-image: url("../images/logo.gif");
+  background-image: url('../images/logo.gif');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 350px;
   height: 300px;
-  width: 1000px;
-  margin-top: 100px;
   margin-bottom: 20px;
+  margin-top: 100px;
+  width: 1000px;
 }
 
 .home {
@@ -31,7 +31,8 @@
   width: 200px;
 }
 
-.email, .password {
+.email,
+.password {
   background-color: white;
   border: none;
   border-radius: 5px;
@@ -47,7 +48,8 @@
   flex-flow: column;
 }
 
-.button-login, .button-create {
+.button-login,
+.button-create {
   background-color: #fecf7c;
   border: 2px solid #ebb656;
   border-radius: 5px;
@@ -56,6 +58,7 @@
   width: 200px;
 }
 
-.button-login:hover, .button-create:hover {
+.button-login:hover,
+.button-create:hover {
   background-color: #ebb656;
 }
