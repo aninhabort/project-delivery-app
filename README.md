@@ -1,5 +1,7 @@
 # Projeto Delivery App
 
+Projeto de um site de Delivery de bebidas, sendo realizado o back-end e o front-end.
+
 ## Foi realizado em grupo com:
   - <a href="https://github.com/julianareitz">Juliana Reitz</a>
   - <a href="https://github.com/glaucon139rossini">Glaucon Rossini</a>
