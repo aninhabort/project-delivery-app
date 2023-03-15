@@ -26,31 +26,37 @@ export default function Products() {
   return (
     <div>
       <Navbar />
-      <button
-        type="button"
-        data-testid="customer_products__button-cart"
-        disabled={ totalPrice <= 0 }
-        onClick={ () => (history.push('/customer/checkout')) }
-      >
-        Ver carrinho: R$:
-        <span
-          data-testid="customer_products__checkout-bottom-value"
-        >
-          { String(totalPrice.toFixed(2)).split('.').join(',') }
-        </span>
-      </button>
-      {
-        cart.length > 0 && products && products.map((product) => {
-          const { quantity } = cart.find(({ name }) => name === product.name);
+      <div className="products">
+        {
+          cart.length > 0 && products && products.map((product) => {
+            const { quantity } = cart.find(({ name }) => name === product.name);
 
-          return (
-            <ProductCard
-              key={ product.id }
-              product={ { ...product, quantity } }
-            />
-          );
-        })
-      }
+            return (
+              <ProductCard
+                key={ product.id }
+                product={ { ...product, quantity } }
+              />
+            );
+          })
+        }
+      </div>
+      <div className="button">
+        <button
+          type="button"
+          data-testid="customer_products__button-cart"
+          disabled={ totalPrice <= 0 }
+          onClick={ () => (history.push('/customer/checkout')) }
+          className="button-show-cart"
+        >
+          Ver carrinho: R$
+          {' '}
+          <span
+            data-testid="customer_products__checkout-bottom-value"
+          >
+            { String(totalPrice.toFixed(2)).split('.').join(',') }
+          </span>
+        </button>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import moment from 'moment/moment';
+import './OrderDetailCard.css';
 
 export default function OrderDetailsCard({ item, order }) {
   const { role, token } = JSON.parse(localStorage.getItem('user'));
@@ -50,7 +51,7 @@ export default function OrderDetailsCard({ item, order }) {
   };
 
   return (
-    <div>
+    <div className="order-detail-card">
       <div
         data-testid={ `${role}_order_details__element-order-details-label-order-id` }
       >
@@ -110,6 +111,7 @@ export default function OrderDetailsCard({ item, order }) {
           type="button"
           data-testid={ `${role}_order_details__button-delivery-check` }
           disabled
+          className="button-check"
         >
           check
         </button>
@@ -120,6 +122,7 @@ export default function OrderDetailsCard({ item, order }) {
             data-testid={ `${role}_order_details__button-preparing-check` }
             onClick={ () => changeStatusButton() }
             disabled={ status !== 'Pendente' }
+            className="button-prepare-order"
           >
             PREPARAR PEDIDO
           </button>
@@ -128,6 +131,7 @@ export default function OrderDetailsCard({ item, order }) {
             data-testid={ `${role}_order_details__button-dispatch-check` }
             onClick={ () => changeStatusButton() }
             disabled={ (status !== 'Preparando') }
+            className="button-out-for-delivery"
           >
             SAIU PARA ENTREGA
           </button>

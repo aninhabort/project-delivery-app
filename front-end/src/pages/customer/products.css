@@ -1,13 +1,30 @@
-button {
-  background-color: rgb(127, 228, 127);
-  border: 2px solid #464646;
+.button {
+  display: flex;
+  flex-flow: row;
+  justify-content: right;
+  margin: 10px;
+  position: relative;
+}
+
+.button-show-cart {
+  background-color: #fecf7c;
+  border: 2px solid #ebb656;
   border-radius: 5px;
-  margin: 8px;
+  bottom: 0;
+  margin: 10px;
+  margin-bottom: 10px;
   padding: 5px 10px;
+  position: fixed;
+  right: 0;
   width: 200px;
 }
 
-button:hover {
-  background-color: #464646;
-  color: white;
+.button-show-cart:hover {
+  background-color: #ebb656;
+}
+
+.products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
