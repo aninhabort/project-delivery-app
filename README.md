@@ -1,13 +1,23 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Projeto Delivery App
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
-
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+- Foi realizado em grupo com:
+  - <a href="https://github.com/julianareitz">Juliana Reitz</a>
+  - <a href="https://github.com/glaucon139rossini">Glaucon Rossini</a>
+  - <a href="https://github.com/Brenno-Lucas">Brenno Lucas</a>
+  - <a href="https://github.com/willian-macedo">Willian Macedo</a>
+  
+- Linguagens utilizadas:
+  - HTML;
+  - CSS;
+  - JavaScript;
+  - Node.js;
+  - React;
+  - MySQL.
+  
+- Ferramentas de organização e comunicação do grupo:
+  - Trello;
+  - Slack;
+  - Zoom;
+  - Lifeshare.
+  
+<a href="https://www.canva.com/design/DAFcz9fJ89c/c_VkYHzChmT-_0XqutVeHQ/view?utm_content=DAFcz9fJ89c&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link da apresentação</a>
